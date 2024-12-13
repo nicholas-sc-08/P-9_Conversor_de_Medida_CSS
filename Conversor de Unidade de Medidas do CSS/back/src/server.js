@@ -4,17 +4,18 @@ const { Pool } = require('pg');
 
 const app = express();
 const pool = new Pool({
-    user: 'postgres', 
+    user: 'postgres', // Substitua pelo seu usuário do PostgreSQL
     host: 'localhost',
-    database: 'crud_cliente_demo', 
-    password: 'postgres', 
-    port: 5432
+    database: 'crud_cliente_demo', // Nome da sua database
+    password: 'postgre', // Substitua pela sua senha
+    port: 5432, // Porta padrão do PostgreSQL
 });
 
 // Habilitar CORS para todas as rotas
 app.use(cors());
 app.use(express.json());
 
+// Rota para buscar todos os clientes
 app.get('/clientes', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM clientes');
@@ -25,7 +26,7 @@ app.get('/clientes', async (req, res) => {
     }
 });
 
-
+// Rota para buscar um cliente por ID
 app.get('/clientes/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -40,6 +41,7 @@ app.get('/clientes/:id', async (req, res) => {
     }
 });
 
+// Rota para adicionar um cliente
 app.post('/clientes', async (req, res) => {
     const { nome, endereco, email, telefone } = req.body;
     try {
@@ -54,7 +56,7 @@ app.post('/clientes', async (req, res) => {
     }
 });
 
-
+// Rota para atualizar um cliente
 app.put('/clientes/:id', async (req, res) => {
     const { id } = req.params;
     const { nome, endereco, email, telefone } = req.body;
@@ -73,6 +75,7 @@ app.put('/clientes/:id', async (req, res) => {
     }
 });
 
+// Rota para deletar um cliente
 app.delete('/clientes/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -90,3 +93,4 @@ app.delete('/clientes/:id', async (req, res) => {
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });
+
