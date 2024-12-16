@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './DashBoard.css';
 import NavBar from './components/NavBar';
 
@@ -7,7 +7,48 @@ function DashBoard() {
   const [unidades_de_medidas, set_unidades_de_medidas] = useState({px_vh: ``, px_vw: ``, vh_px: ``, vw_px: ``});
   const [unidades_de_medidas_apos_mudanca, set_unidades_de_medidas_apos_mudanca] = useState({px_vh: ``, px_vw: ``, vh_px: ``, vw_px: ``});  
 
-  console.log(unidades_de_medidas);
+  const [altura_da_viewport, set_altura_da_viewport] = useState(1080);
+  const [largura_da_viewport, set_largura_da_viewport] = useState(1920);
+
+  useEffect(() => {
+    const resultado = { ...unidades_de_medidas_apos_mudanca };
+
+    if (unidades_de_medidas.px_vh !== '') {
+      
+      resultado.px_vh = (parseFloat(unidades_de_medidas.px_vh) / altura_da_viewport) * 100;
+    } else {
+      
+      resultado.px_vh = '';
+    }
+
+    if (unidades_de_medidas.px_vw !== '') {
+      
+      resultado.px_vw = (parseFloat(unidades_de_medidas.px_vw) / largura_da_viewport) * 100;
+    } else {
+      
+      resultado.px_vw = '';
+    }
+
+    if (unidades_de_medidas.vh_px !== '') {
+      
+      resultado.vh_px = (parseFloat(unidades_de_medidas.vh_px)* altura_da_viewport) / 100;
+    } else {
+      
+      resultado.vh_px = '';
+    }
+
+    if (unidades_de_medidas.vw_px !== '') {
+      
+      resultado.vw_px = (parseFloat(unidades_de_medidas.vw_px) * largura_da_viewport) / 100;
+    } else {
+      
+      resultado.vw_px = '';
+    }
+
+    set_unidades_de_medidas_apos_mudanca(resultado);
+}, [unidades_de_medidas]);
+
+
   
 
   return (
