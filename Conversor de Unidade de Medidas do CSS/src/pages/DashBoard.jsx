@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './DashBoard.css';
-import NavBar from './components/NavBar';
+import NavBar from '../components/NavBar';
 
 function DashBoard() {
 

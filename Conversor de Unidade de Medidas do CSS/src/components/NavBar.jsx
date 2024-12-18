@@ -1,5 +1,6 @@
 import React from 'react'
 import './NavBar.css'
+import { Link } from 'react-router-dom'
 
 function NavBar() {
   return (
@@ -7,7 +8,7 @@ function NavBar() {
       
         <div className='container_da_imagem_da_navbar'>
 
-            <img src="Logo_do_projeto.svg" alt="Logo" />
+            <Link to={`/cadastro`}><img src="Logo_do_projeto.svg" alt="Logo" /></Link>
 
         </div>
 
