@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './DashBoard.css';
 import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 function DashBoard() {
 
@@ -11,39 +12,47 @@ function DashBoard() {
   const [largura_da_viewport, set_largura_da_viewport] = useState(1920);
 
   useEffect(() => {
+    
     const resultado = { ...unidades_de_medidas_apos_mudanca };
 
     if (unidades_de_medidas.px_vh !== '') {
       
-      resultado.px_vh = (parseFloat(unidades_de_medidas.px_vh) / altura_da_viewport) * 100;
+      resultado.px_vh = (parseFloat(unidades_de_medidas.px_vh) / altura_da_viewport) * 100 + `vh`;
+   
     } else {
       
       resultado.px_vh = '';
-    }
+    
+    };
 
     if (unidades_de_medidas.px_vw !== '') {
       
-      resultado.px_vw = (parseFloat(unidades_de_medidas.px_vw) / largura_da_viewport) * 100;
+      resultado.px_vw = (parseFloat(unidades_de_medidas.px_vw) / largura_da_viewport) * 100 + `vw`;
+    
     } else {
       
       resultado.px_vw = '';
-    }
+    };
 
     if (unidades_de_medidas.vh_px !== '') {
       
-      resultado.vh_px = (parseFloat(unidades_de_medidas.vh_px)* altura_da_viewport) / 100;
+      resultado.vh_px = (parseFloat(unidades_de_medidas.vh_px)* altura_da_viewport) / 100 + `px`;
+    
     } else {
       
       resultado.vh_px = '';
-    }
+    
+    };
 
     if (unidades_de_medidas.vw_px !== '') {
       
-      resultado.vw_px = (parseFloat(unidades_de_medidas.vw_px) * largura_da_viewport) / 100;
+      resultado.vw_px = (parseFloat(unidades_de_medidas.vw_px) * largura_da_viewport) / 100 + `px`;
+
     } else {
       
       resultado.vw_px = '';
-    }
+   
+    };
 
     set_unidades_de_medidas_apos_mudanca(resultado);
 }, [unidades_de_medidas]);
@@ -61,16 +70,16 @@ function DashBoard() {
         <div className="card_da_esquerda">
 
             <label>Converta de PX para VH</label>
-            <input type="text" placeholder='Digite a unidade em px' value={unidades_de_medidas.px_vh} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, px_vh: e.target.value})}/>
+            <input type="number" placeholder='Digite a unidade em px' value={unidades_de_medidas.px_vh} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, px_vh: e.target.value})}/>
 
             <label>Converta de PX para VW</label>
-            <input type="text" placeholder='Digite a unidade em px' value={unidades_de_medidas.px_vw} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, px_vw: e.target.value})}/>
+            <input type="number" placeholder='Digite a unidade em px' value={unidades_de_medidas.px_vw} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, px_vw: e.target.value})}/>
 
             <label>Converta de VH para PX</label>
-            <input type="text" placeholder='Digite a unidade em vh' value={unidades_de_medidas.vh_px} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, vh_px: e.target.value})}/>
+            <input type="number" placeholder='Digite a unidade em vh' value={unidades_de_medidas.vh_px} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, vh_px: e.target.value})}/>
 
             <label>Converta de VW para PX</label>
-            <input type="text" placeholder='Digite a unidade em vw' value={unidades_de_medidas.vw_px} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, vw_px: e.target.value})}/>
+            <input type="number" placeholder='Digite a unidade em vw' value={unidades_de_medidas.vw_px} onChange={e => set_unidades_de_medidas({...unidades_de_medidas, vw_px: e.target.value})}/>
 
         </div>
 
@@ -91,6 +100,8 @@ function DashBoard() {
         </div>
 
       </div>
+
+      <Footer/>
     </div>
   )
 }
