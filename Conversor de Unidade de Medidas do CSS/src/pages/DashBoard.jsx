@@ -15,42 +15,42 @@ function DashBoard() {
     
     const resultado = { ...unidades_de_medidas_apos_mudanca };
 
-    if (unidades_de_medidas.px_vh !== '') {
+    if (unidades_de_medidas.px_vh !== ``) {
       
       resultado.px_vh = (parseFloat(unidades_de_medidas.px_vh) / altura_da_viewport) * 100 + `vh`;
    
     } else {
       
-      resultado.px_vh = '';
+      resultado.px_vh = ``;
     
     };
 
-    if (unidades_de_medidas.px_vw !== '') {
+    if (unidades_de_medidas.px_vw !== ``) {
       
       resultado.px_vw = (parseFloat(unidades_de_medidas.px_vw) / largura_da_viewport) * 100 + `vw`;
     
     } else {
       
-      resultado.px_vw = '';
+      resultado.px_vw = ``;
     };
 
-    if (unidades_de_medidas.vh_px !== '') {
+    if (unidades_de_medidas.vh_px !== ``) {
       
       resultado.vh_px = (parseFloat(unidades_de_medidas.vh_px)* altura_da_viewport) / 100 + `px`;
     
     } else {
       
-      resultado.vh_px = '';
+      resultado.vh_px = ``;
     
     };
 
-    if (unidades_de_medidas.vw_px !== '') {
+    if (unidades_de_medidas.vw_px !== ``) {
       
       resultado.vw_px = (parseFloat(unidades_de_medidas.vw_px) * largura_da_viewport) / 100 + `px`;
 
     } else {
       
-      resultado.vw_px = '';
+      resultado.vw_px = ``;
    
     };
 
