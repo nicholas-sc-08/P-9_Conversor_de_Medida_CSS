@@ -14,5 +14,5 @@
 <p>Copie a url que aparecerá, com o Git instalado em seu computador, abra o prompt de commando ou o windows terminal e digite:</p>
 
 ```git
-  git clone "url a copiar"
+  git clone https://github.com/nicholas-sc-08/P-6_Conversor_de_Medida_CSS.git
 ```
